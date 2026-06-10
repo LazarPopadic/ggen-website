@@ -970,3 +970,39 @@ footer {
   .form-row { grid-template-columns: 1fr; }
   .hero-content { padding: 120px 0 90px; }
 }
+
+/* ---------- Scroll sun (decorative layer) ---------- */
+.sun-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: clip;
+  pointer-events: none;
+  z-index: 60; /* above page content, below the navbar (100) */
+}
+.sun-layer svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.sun-line {
+  fill: none;
+  stroke: var(--gold);
+  opacity: 0.22;
+  stroke-width: 1.5;
+  stroke-dasharray: 1 9;
+  stroke-linecap: round;
+}
+.sun-orb { opacity: 0.85; }
+.sun-spin { animation: sun-spin 26s linear infinite; }
+@keyframes sun-spin {
+  to { transform: rotate(360deg); }
+}
+@media (max-width: 640px) {
+  .sun-orb { opacity: 0.6; }
+  .sun-line { opacity: 0.16; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sun-layer { display: none; }
+}
